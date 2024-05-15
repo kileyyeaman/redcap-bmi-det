@@ -3,7 +3,7 @@ library(cdcanthro)
 library(REDCapR)
 
 # redcap_uri <- URL REDACTED
-# token <- TOKEN REDACTED
+# token      <- TOKEN REDACTED
 
 #* @apiTitle BMI Calculator for REDCap
 #* @apiDescription An API that utilizes the CDC's BMI calculator package to return BMI z-scores and percentiles to REDCap
@@ -13,7 +13,7 @@ library(REDCapR)
 #* @post /bmi_calculator
 function(record) {
   fields <- c("sex", "age", "wt", "ht", "bmi")
-  record <-as.character(record)
+  record <- as.character(record)
   
   # Read data from REDCap
   redcap_data <- redcap_read_oneshot(redcap_uri,
@@ -28,11 +28,10 @@ function(record) {
                             redcap_data$wt,
                             redcap_data$ht,
                             redcap_data$bmi)
+  
   # Add record to data frame
   cdc_bmi_data$record_id <- as.numeric(record)
   
   # Write dataframe back to REDCap
-  redcap_write_oneshot(cdc_bmi_data,
-                       redcap_uri,
-                       token)
+  redcap_write_oneshot(cdc_bmi_data, redcap_uri, token)
 }
