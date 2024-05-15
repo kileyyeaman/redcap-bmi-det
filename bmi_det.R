@@ -2,7 +2,7 @@ library(plumber)
 library(cdcanthro)
 library(REDCapR)
 
-redcap_uri <- "https://redcap-api.chop.edu/api/"
+# redcap_uri <- URL REDACTED
 # token <- TOKEN REDACTED
 
 #* @apiTitle BMI Calculator for REDCap
